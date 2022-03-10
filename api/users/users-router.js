@@ -72,9 +72,10 @@ router.post('/:id/posts', validateUserId, validatePost, async (req, res, next) =
   // and another middleware to check that the request body is valid
   try {
     const newPost = await Posts.insert({
-      user_id: req,params, id,
-      text: req.tex
-    });      
+      user_id: req.params.id,
+      text: req.text
+    });
+    console.log(newPost);
     res.status(201).json(newPost);
   }
   catch(err) {
